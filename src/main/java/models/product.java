@@ -12,7 +12,6 @@ public class product {
     private boolean bestseller;
     private String logos;
     private String logos_alt;
-
     public product(int id, int id_categories, String title, double price, boolean new_product, boolean bestseller, String logos, String logos_alt) {
         this.id = id;
         this.title = title;
