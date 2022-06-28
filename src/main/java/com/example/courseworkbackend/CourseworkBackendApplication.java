@@ -20,7 +20,6 @@ public class CourseworkBackendApplication {
         return String.format("Hello %s!", name);
     }
     public static void main(String[] args) {
-        System.out.println("I am piece of sheet ");
         SpringApplication.run(CourseworkBackendApplication.class, args);
     }
     @Bean

@@ -68,12 +68,13 @@ public class TestController {
     }
 
     @GetMapping("test")
-    public List<models.product> test(@RequestParam("login") String login, @RequestParam("password") String password) {
+    public int  test(@RequestParam("login") String login, @RequestParam("password") String password) {
+        System.out.println(user_id);
         this.user_id = user.getUserId(login);
         System.out.println(login + " " + password);
         System.out.println(this.user_id);
 
-        return null;
+        return user_id;
     }
 
     @GetMapping("{id}")
@@ -83,17 +84,22 @@ public class TestController {
                 .findFirst()
                 .orElseThrow(NotFoundException::new);
     }
-
     //    @GetMapping("favorire/{user_id}")
 //    public List<models.favorite> favorites(@PathVariable int user_id){
 //        return this.favorite.getListFavoriteByID(user_id);
 //    }
     @GetMapping("favorire")
-    public List<models.favorite> favorites() {
+    public List<models.product> favorites() {
         if(user_id != -1) {
-            return this.favorite.getListFavoriteByID(user_id);
+            return this.favorite.getFavoriteProdictList(user_id);
         }else return null;
     }
+//    @GetMapping("favorire")
+//    public List<models.favorite> favorites() {
+//        if(user_id != -1) {
+//            return this.favorite.getListFavoriteByID(user_id);
+//        }else return null;
+//    }
 
     @PostMapping("favorire/{user_id}")
     public List<models.favorite> AddFavorite(@PathVariable int user_id) {
