@@ -21,7 +21,7 @@ public class TestController {
     final private Product product;
     final private Favorite favorite;
     final private User user;
-    private int user_id;
+    private int user_id = -1;
 
     public TestController(Categories categories, Product product, Favorite favorite, User user) {
         this.categories = categories;
@@ -90,6 +90,7 @@ public class TestController {
 //    }
     @GetMapping("favorire")
     public List<models.product> favorites() {
+        System.out.println(this.user_id);
         if(user_id != -1) {
             return this.favorite.getFavoriteProdictList(user_id);
         }else return null;
